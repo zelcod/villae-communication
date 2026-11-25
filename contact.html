@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VILLAE Communication — Brief et contact</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&amp;family=Manrope:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+.vc{--bg:#0B0B0C;--surface:#131315;--surface2:#1C1C1F;--ink:#F2F0EC;--muted:#A09D97;--line:rgba(242,240,236,.12);--line2:rgba(242,240,236,.35);--accent:#FF5A36;--accent-hi:#FF7656;--accent-text:#FF7A5C;--on-accent:#0B0B0C;--ph:#1C1C1F;--glow:rgba(255,90,54,.4);background:var(--bg);color:var(--ink);font-family:Manrope,system-ui,sans-serif;transition:background-color .5s ease,color .5s ease}
+.vc.light{--bg:#F3F1EC;--surface:#E9E6DF;--surface2:#DDD9D0;--ink:#121212;--muted:#55524C;--line:#D4D0C6;--line2:#8F8B83;--accent:#E8431F;--accent-hi:#FF5A36;--accent-text:#B8320F;--on-accent:#121212;--ph:#DDD9D0;--glow:rgba(232,67,31,.35)}
+.vc header,.vc section{transition:background-color .5s ease,color .5s ease,border-color .5s ease}
+.vc-d{font-family:Syne,system-ui,sans-serif;font-weight:700;letter-spacing:-.02em}
+a{color:var(--accent-text)}
+.vc-link{position:relative;display:inline-block;overflow:hidden;padding:12px 2px;margin:0 10px;font-size:14px;font-weight:600;color:var(--ink);text-decoration:none;line-height:1.2}
+.vc-link span{display:block;transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.vc-link span::after{content:attr(data-t);position:absolute;left:0;top:100%;color:var(--accent-text)}
+.vc-link:hover span{transform:translateY(-100%)}
+.vc-link.on{color:var(--accent-text)}
+.vc-btn{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:18px 30px;border-radius:999px;font-family:inherit;font-size:14px;font-weight:600;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:transform .35s cubic-bezier(.2,.7,.2,1),color .35s,border-color .35s,box-shadow .35s}
+.vc-arr{display:inline-block;transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.vc-btn:hover .vc-arr{transform:rotate(-45deg)}
+.vc-btn:active{transform:scale(.96)}
+.vc-solid{background:var(--accent);color:var(--on-accent)}
+.vc-solid::before{content:"";position:absolute;left:50%;top:50%;width:0;height:0;z-index:-1;border-radius:50%;background:var(--ink);transform:translate(-50%,-50%);transition:width .55s cubic-bezier(.2,.7,.2,1),height .55s cubic-bezier(.2,.7,.2,1)}
+.vc-solid:hover{color:var(--bg);box-shadow:0 18px 40px -18px var(--glow)}
+.vc-solid:hover::before{width:400px;height:400px}
+.vc-ghost{color:var(--ink);border-color:var(--line2);background:transparent}
+.vc-ghost::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--accent);transform:scaleX(0);transform-origin:right;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.vc-ghost:hover{color:var(--on-accent);border-color:var(--accent)}
+.vc-ghost:hover::before{transform:scaleX(1);transform-origin:left}
+.vc-seg{display:inline-flex;gap:2px;padding:3px;border:1px solid var(--line);border-radius:999px}
+.vc-sb{width:42px;height:42px;display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:999px;background:transparent;color:var(--muted);cursor:pointer;transition:background-color .3s,color .3s}
+.vc-sb svg{transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.vc-sb:hover{color:var(--ink);background:var(--surface2)}
+.vc-sb:hover svg{transform:rotate(-25deg) scale(1.1)}
+.vc-sb.on{background:var(--accent);color:var(--on-accent)}
+.vc-crumb{color:var(--muted);text-decoration:none;transition:color .3s}
+.vc-crumb:hover{color:var(--accent-text)}
+.vc-q{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;color:var(--accent-text);margin:0}
+.vc-chip{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:10px 20px;border-radius:999px;border:1.5px solid var(--line2);background:transparent;color:var(--ink);font-family:inherit;font-size:15px;font-weight:600;cursor:pointer;transition:background-color .3s,color .3s,border-color .3s,transform .3s cubic-bezier(.2,.7,.2,1)}
+.vc-chip:hover{border-color:var(--accent);transform:translateY(-2px)}
+.vc-chip.on{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.vc-chip .pl{display:inline-block;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.vc-chip.on .pl{transform:rotate(45deg)}
+.vc-field{display:flex;flex-direction:column;gap:8px}
+.vc-label{font-size:12px;letter-spacing:.06em;color:var(--muted);transition:color .3s}
+.vc-field:focus-within .vc-label{color:var(--accent-text)}
+.vc-input{font-family:inherit;font-size:18px;color:var(--ink);background:transparent;border:0;border-bottom:1.5px solid var(--line2);border-radius:0;padding:12px 0;outline:none;width:100%;transition:border-color .3s}
+.vc-input:hover{border-color:var(--ink)}
+.vc-input:focus{border-color:var(--accent)}
+.vc-input option{background:var(--bg);color:var(--ink)}
+.vc-input::placeholder{color:var(--muted);opacity:.75}
+.vc-check{display:flex;gap:12px;align-items:flex-start;font-size:13px;line-height:1.6;color:var(--muted);cursor:pointer}
+.vc-check input{width:18px;height:18px;margin-top:2px;accent-color:var(--accent)}
+.vc-img{position:relative;overflow:hidden;background:var(--ph)}
+.vc-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.vc-img:hover img{transform:scale(1.05)}
+.vc-flink{color:#A09D97;text-decoration:none;transition:color .3s}
+.vc-flink:hover{color:#FF7A5C}
+@keyframes vc-in{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.vc-in{animation:vc-in .6s cubic-bezier(.2,.7,.2,1) both}
+</style>
+<script src="js/dc-lite.js" defer></script>
+</head>
+<body>
+<div id="dc-root"></div>
+<noscript><p style="padding:40px;font-family:sans-serif">Ce site nécessite JavaScript.</p></noscript>
+<template id="dc-tpl">
+
+
+<div class="vc {{themeClass}}" style="width: 100%; min-height: 100vh">
+
+
+  <header style="position: sticky; top: 0; z-index: 50; background: var(--bg); border-bottom: 1px solid var(--line)">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 14px 40px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 24px">
+      <a href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink)">
+        <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18.5" fill="none" style="stroke: var(--ink)" stroke-width="1.5"></circle><circle cx="27" cy="13" r="5" style="fill: var(--accent)"></circle></svg>
+        <span style="display: flex; flex-direction: column; line-height: 1.05">
+          <span class="vc-d" style="font-size: 20px; font-weight: 800; letter-spacing: 0.02em">VILLAE</span>
+          <span style="font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--muted)">Communication</span>
+        </span>
+      </a>
+      <nav aria-label="Navigation principale" style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px">
+        <a href="index.html" class="vc-link"><span data-t="Accueil">Accueil</span></a>
+        <a href="index.html" class="vc-link"><span data-t="Expertises">Expertises</span></a>
+        <a href="projets.html" class="vc-link"><span data-t="Projets">Projets</span></a>
+        <a href="index.html" class="vc-link"><span data-t="Studio">Studio</span></a>
+        <a href="contact.html" class="vc-link on"><span data-t="Contact">Contact</span></a>
+        <div class="vc-seg" role="group" aria-label="Thème d'affichage" style="margin-left: 10px">
+          <button type="button" class="vc-sb {{segDark}}" aria-pressed="{{pDark}}" aria-label="Thème sombre" title="Sombre" onClick="{{toDark}}"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 13.2A8.5 8.5 0 1 1 10.8 3.5a6.6 6.6 0 0 0 9.7 9.7z"></path></svg></button>
+          <button type="button" class="vc-sb {{segLight}}" aria-pressed="{{pLight}}" aria-label="Thème clair" title="Clair" onClick="{{toLight}}"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"></circle><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"></path></svg></button>
+          <button type="button" class="vc-sb {{segAuto}}" aria-pressed="{{pAuto}}" aria-label="Suivre le réglage de l'appareil" title="Auto" onClick="{{toAuto}}"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12.5" rx="1.5"></rect><path d="M9 20.5h6M12 16.5v4"></path></svg></button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section style="max-width: 1320px; margin: 0 auto; padding: 56px 40px 120px">
+    <p style="margin: 0 0 40px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.08em"><a href="index.html" class="vc-crumb">ACCUEIL</a> <span style="color: var(--muted)">/</span> <span style="color: var(--accent-text)">CONTACT</span></p>
+    <h1 class="vc-d" style="margin: 0 0 64px; font-weight: 800; font-size: clamp(54px, 8.6vw, 140px); line-height: 0.9; letter-spacing: -0.05em; text-transform: uppercase">Racontez-nous<br><span style="color: var(--accent-text)">votre projet.</span></h1>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 72px; align-items: flex-start">
+      <div style="flex: 1 1 600px; min-width: 0">
+
+        <sc-if value="{{sent}}" hint-placeholder-val="{{ false }}">
+          <div class="vc-in" role="status" style="display: flex; flex-direction: column; gap: 20px; padding: 44px; border-radius: 26px; background: var(--accent); color: var(--on-accent)">
+            <h2 class="vc-d" style="margin: 0; font-size: clamp(34px, 4vw, 54px); font-weight: 800; line-height: 1; text-transform: uppercase">Brief reçu.</h2>
+            <p style="margin: 0; font-size: 16px; line-height: 1.7">Merci ! On revient vers vous sous [48 h] avec une première lecture de votre demande.</p>
+            <p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.06em">VOTRE SÉLECTION : {{summary}}</p>
+            <div><button type="button" class="vc-btn" onClick="{{reset}}" style="background: #0B0B0C; color: #F2F0EC">Nouveau brief</button></div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{notSent}}" hint-placeholder-val="{{ true }}">
+          <form class="vc-in" onSubmit="{{submit}}" style="display: flex; flex-direction: column; gap: 56px">
+            <fieldset style="border: 0; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 18px">
+              <legend class="vc-q" style="padding: 0; margin-bottom: 18px">01 — DE QUOI AVEZ-VOUS BESOIN ? (PLUSIEURS CHOIX)</legend>
+              <div style="display: flex; flex-wrap: wrap; gap: 10px">
+                <sc-for list="{{services}}" as="c" hint-placeholder-count="6"><button type="button" class="vc-chip {{c.on}}" aria-pressed="{{c.p}}" onClick="{{c.pick}}"><span class="pl" aria-hidden="true">+</span>{{c.label}}</button></sc-for>
+              </div>
+            </fieldset>
+            <fieldset style="border: 0; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 18px">
+              <legend class="vc-q" style="padding: 0; margin-bottom: 18px">02 — QUEL BUDGET ENVISAGEZ-VOUS ?</legend>
+              <div style="display: flex; flex-wrap: wrap; gap: 10px">
+                <sc-for list="{{budgets}}" as="c" hint-placeholder-count="4"><button type="button" class="vc-chip {{c.on}}" aria-pressed="{{c.p}}" onClick="{{c.pick}}">{{c.label}}</button></sc-for>
+              </div>
+            </fieldset>
+            <fieldset style="border: 0; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 28px">
+              <legend class="vc-q" style="padding: 0; margin-bottom: 18px">03 — PARLONS DE VOUS</legend>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px 32px">
+                <div class="vc-field"><label class="vc-label" for="c-nom">Nom &amp; prénom</label><input id="c-nom" class="vc-input" type="text" autocomplete="name" required placeholder="Jeanne Martin"></div>
+                <div class="vc-field"><label class="vc-label" for="c-soc">Entreprise</label><input id="c-soc" class="vc-input" type="text" autocomplete="organization" placeholder="Votre marque"></div>
+                <div class="vc-field"><label class="vc-label" for="c-mail">E-mail</label><input id="c-mail" class="vc-input" type="email" autocomplete="email" required placeholder="jeanne@exemple.fr"></div>
+                <div class="vc-field"><label class="vc-label" for="c-delai">Échéance</label>
+                  <select id="c-delai" class="vc-input"><option>Dès que possible</option><option>D'ici 1 à 3 mois</option><option>D'ici 3 à 6 mois</option><option>Pas encore définie</option></select>
+                </div>
+              </div>
+              <div class="vc-field"><label class="vc-label" for="c-msg">Votre projet en quelques lignes</label><textarea id="c-msg" class="vc-input" rows="4" placeholder="Contexte, objectifs, cibles, contraintes…" style="resize: vertical"></textarea></div>
+              <label class="vc-check"><input type="checkbox" required><span>J'accepte que mes données soient utilisées pour traiter ma demande, conformément à la politique de confidentialité.</span></label>
+            </fieldset>
+            <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 20px"><button type="submit" class="vc-btn vc-solid" style="padding: 22px 38px; font-size: 15px">Envoyer le brief <span class="vc-arr">→</span></button><span style="font-size: 13px; color: var(--muted)">{{countTxt}}</span></div>
+          </form>
+        </sc-if>
+      </div>
+
+      <aside style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 28px">
+        <div class="vc-img" style="aspect-ratio: 4 / 5; border-radius: 22px"><img src="assets/c-plants.jpg" alt="Personne travaillant dans un studio rempli de plantes"></div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <span class="vc-q">EN DIRECT</span>
+          <span class="vc-d" style="font-size: 26px">[hello@villae-communication.fr]</span>
+          <span style="font-size: 15px; color: var(--muted)">[Téléphone]</span>
+          <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 16px; padding-top: 20px; border-top: 1px solid var(--line)">
+            <span class="vc-q">NOS 4 AGENCES</span>
+            <div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 15px; font-weight: 600">Yaoundé</span><span style="font-size: 14px; color: var(--muted)">[N° et rue], Yaoundé, Cameroun</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--muted)">Lun–Ven 9h30–18h30 · Sam 10h–13h</span></div>
+            <div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 15px; font-weight: 600">Douala</span><span style="font-size: 14px; color: var(--muted)">[N° et rue], Douala, Cameroun</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--muted)">Lun–Ven 9h30–18h · Sam 10h–13h</span></div>
+            <div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 15px; font-weight: 600">Bertoua</span><span style="font-size: 14px; color: var(--muted)">[N° et rue], Bertoua, Cameroun</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--muted)">Lun–Ven 9h–17h30 · Sam 10h–13h</span></div>
+            <div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 15px; font-weight: 600">Garoua</span><span style="font-size: 14px; color: var(--muted)">[N° et rue], Garoua, Cameroun</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--muted)">Lun–Ven 9h30–18h · Sam 10h–13h</span></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <footer style="background: #050505; color: #A09D97">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 40px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-size: 12px">
+      <span>© 2026 VILLAE Communication · [SIREN] · Photos : Unsplash</span>
+      <span style="display: flex; flex-wrap: wrap; gap: 24px"><a href="index.html" class="vc-flink">Accueil</a><a href="projets.html" class="vc-flink">Projets</a><a href="#" class="vc-flink">Mentions légales</a></span>
+    </div>
+  </footer>
+</div>
+</template>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2400}}'>
+class Component extends DCLogic {
+  componentDidMount() {
+    let t = 'dark';
+    try { t = window.localStorage.getItem('vpm-theme') || 'dark'; } catch (e) {}
+    let sys = true;
+    try {
+      this.mq = window.matchMedia('(prefers-color-scheme: dark)');
+      sys = this.mq.matches;
+      this.onMq = (e) => this.setState({ sysDark: e.matches });
+      this.mq.addEventListener('change', this.onMq);
+    } catch (e) {}
+    this.setState({ theme: t, sysDark: sys });
+  }
+  componentWillUnmount() { try { this.mq.removeEventListener('change', this.onMq); } catch (e) {} }
+  setTheme(t) {
+    this.setState({ theme: t });
+    try { window.localStorage.setItem('vpm-theme', t); } catch (e) {}
+  }
+  renderVals() {
+    const s = this.state || {};
+    const t = s.theme || 'dark';
+    const dark = t === 'auto' ? s.sysDark !== false : t === 'dark';
+    const svc = s.svc || {};
+    const budget = s.budget || '';
+    const sent = !!s.sent;
+    const svcLabels = ['Identité & branding', 'Site web', 'Social media', 'Événement', 'Photo & vidéo', 'Relations presse', 'Stratégie'];
+    const budLabels = ['[Tranche 1]', '[Tranche 2]', '[Tranche 3]', 'À définir ensemble'];
+    const picked = svcLabels.filter((l) => svc[l]);
+    return {
+      themeClass: dark ? '' : 'light',
+      segDark: t === 'dark' ? 'on' : '', segLight: t === 'light' ? 'on' : '', segAuto: t === 'auto' ? 'on' : '',
+      pDark: String(t === 'dark'), pLight: String(t === 'light'), pAuto: String(t === 'auto'),
+      toDark: () => this.setTheme('dark'), toLight: () => this.setTheme('light'), toAuto: () => this.setTheme('auto'),
+      services: svcLabels.map((l) => ({ label: l, on: svc[l] ? 'on' : '', p: String(!!svc[l]), pick: () => { const n = Object.assign({}, svc); n[l] = !n[l]; this.setState({ svc: n }); } })),
+      budgets: budLabels.map((l) => ({ label: l, on: l === budget ? 'on' : '', p: String(l === budget), pick: () => this.setState({ budget: l === budget ? '' : l }) })),
+      countTxt: picked.length === 0 ? 'Aucune expertise sélectionnée' : (picked.length + (picked.length > 1 ? ' expertises sélectionnées' : ' expertise sélectionnée')),
+      summary: (picked.length ? picked.join(' · ') : 'À préciser') + (budget ? ' — ' + budget : ''),
+      sent: sent, notSent: !sent,
+      submit: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ sent: true }); },
+      reset: () => this.setState({ sent: false, svc: {}, budget: '' })
+    };
+  }
+}
+</script>
+</body>
+</html>
